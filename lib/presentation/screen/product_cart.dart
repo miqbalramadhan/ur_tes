@@ -1,17 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:get/route_manager.dart';
 import 'package:provider/provider.dart';
 import 'package:ur_tes/presentation/component/image_url.dart';
 import 'package:ur_tes/presentation/component/not_found.dart';
 import 'package:ur_tes/presentation/component/shimmer_loading_component.dart';
 import 'package:ur_tes/presentation/component/style.dart';
-import 'package:ur_tes/presentation/screen/product_detail.dart';
-import 'package:ur_tes/presentation/screen/product_order.dart';
 import 'package:ur_tes/provider/cart_provider.dart';
-import 'package:ur_tes/repository/product_client.dart';
 import 'package:ur_tes/util/functions.dart';
 import 'package:ur_tes/values/colors.dart';
 
@@ -192,6 +187,7 @@ class _ProductCartState extends State<ProductCart> {
     // ignore: deprecated_member_use
     return Container(
       padding: EdgeInsets.all(10),
+      // ignore: deprecated_member_use
       child: FlatButton(
         minWidth: MediaQuery.of(context).size.width,
         height: 50,
