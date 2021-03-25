@@ -2,7 +2,10 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
+import 'package:provider/provider.dart';
+import 'package:ur_tes/model/cart_map.dart';
 import 'package:ur_tes/presentation/screen/product_order.dart';
+import 'package:ur_tes/provider/cart_provider.dart';
 import 'package:ur_tes/util/functions.dart';
 import 'package:ur_tes/values/colors.dart';
 
@@ -138,9 +141,17 @@ class _ProductDetailState extends State<ProductDetail> {
       color: MyColors.indigo,
       onPressed: () {
         if (widget.item.variantGroups.length == 0) {
+          Provider.of<CartProvider>(context, listen: false).addCart(CartMap(
+            id: widget.item.id,
+            name: widget.item.name,
+            image: widget.item.images[0],
+            totalPrice: widget.item.price,
+          ));
           ScaffoldMessenger.of(context).showSnackBar(new SnackBar(
               behavior: SnackBarBehavior.floating,
-              content: new Text("Tidak ada variant")));
+              content: new Text("Berhasil menambahkan ke keranjang")));
+
+          setState(() => Navigator.pop(context));
         } else {
           Get.to(ProductOrder(widget.item));
         }
